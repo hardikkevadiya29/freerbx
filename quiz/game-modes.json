@@ -1,0 +1,33 @@
+[
+  {
+    "question": "Which sniper weapon has the highest zoom level in Roblox FPS games?",
+    "options": ["AWP", "Sniper Scope", "Scoped M14", "Silent Sniper"],
+    "answer": "AWP",
+    "description": "<h3>HIGH-ZOOM SNIPER IN ROBLOX</h3><p>The AWP is known for its powerful scope and high zoom level, allowing precise targeting from long distances in games like Phantom Forces.</p>"
+  },
+  {
+    "question": "Which Roblox fighting game features elemental powers like fire, lightning, and wind?",
+    "options": ["Elemental Battlegrounds", "Combat Warriors", "Dragon Blox", "Anime Battle Arena"],
+    "answer": "Elemental Battlegrounds",
+    "description": "<h3>ELEMENTAL POWERS IN ROBLOX</h3><p>Elemental Battlegrounds is a popular Roblox fighting game where players can use various elemental powers including fire, lightning, wind, and more to battle opponents.</p>"
+  },
+  {
+    "question": "What is the most popular Roblox FPS game?",
+    "options": ["Phantom Forces", "Arsenal", "Counter Blox", "Bad Business"],
+    "answer": "Phantom Forces",
+    "description": "<h3>POPULAR ROBLOX FPS</h3><p>Phantom Forces is one of the most popular and well-known FPS games on Roblox, featuring realistic gun mechanics and various game modes.</p>"
+  },
+  {
+    "question": "Which weapon category deals the most damage in Roblox FPS games?",
+    "options": ["Sniper Rifles", "Assault Rifles", "Shotguns", "Pistols"],
+    "answer": "Sniper Rifles",
+    "description": "<h3>WEAPON DAMAGE IN ROBLOX FPS</h3><p>Sniper rifles typically deal the highest damage per shot in Roblox FPS games, often capable of one-shot kills with headshots.</p>"
+  },
+  {
+    "question": "What is the maximum level in most Roblox FPS games?",
+    "options": ["100", "150", "200", "Unlimited"],
+    "answer": "100",
+    "description": "<h3>LEVEL SYSTEM IN ROBLOX FPS</h3><p>Most Roblox FPS games like Phantom Forces and Arsenal have a maximum level of 100, after which players can prestige or continue earning rewards.</p>"
+  }
+]
+
