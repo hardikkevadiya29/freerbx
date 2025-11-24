@@ -15,6 +15,26 @@
         rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://rbx3.atmhtml5games.com/style.css?v=43434343434">
+    <style>
+        .verification-container .game-title {
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-verify.btn-above-18 {
+            background: linear-gradient(135deg, #ffe866 0%, #ffb347 100%);
+            color: #0d0d0d;
+            border: none;
+            box-shadow: 0 10px 25px rgba(255, 184, 71, 0.35);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .btn-verify.btn-above-18:hover,
+        .btn-verify.btn-above-18:focus {
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 15px 30px rgba(255, 184, 71, 0.45);
+        }
+    </style>
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1615420563101212"
         crossorigin="anonymous"></script>
@@ -53,13 +73,13 @@
             </div>
             <!-------------------- -->
             <div class="verification-container">
-                <h1 class="game-title">Welcome to freerbx earny</h1>
+                <h1 class="game-title">Welcome to freerbx</h1>
                 <div class="buttons-container-mobile">
                     <button class="btn-verify btn-above-18">
                         <i class="fas fa-check-circle"></i> Above 18+
                     </button>
                     <button class="btn-verify btn-below-18" style="display:none;"
-                        onclick="window.location.href='https://rbx3.atmhtml5games.com/homegame-category.php'">
+                        onclick="window.location.href='game-category.html'">
                         <i class="fas fa-gamepad"></i> Age Below 18+
                     </button>
                 </div>
