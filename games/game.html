@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Games - Play Now</title>
+  <link href="../cdn.jsdelivr.net/npm/bootstrap%405.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://rbx3.atmhtml5games.com/style.css?v=6.1.2">
+  <script src="../ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1615420563101212"
+    crossorigin="anonymous"></script>
+
+  <style>
+    .extra-nav-tabs {
+      white-space: nowrap;
+      overflow-x: auto;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      padding: 10px 0;
+    }
+
+    li.nav-item.extra-nav-item.custom-nav-item:focus-visible {
+      outline: none;
+    }
+
+    a.nav-link.active.extra-nav-link.custom-nav-link,
+    .nav-link:hover {
+      border-radius: 20px;
+      border-radius: 20px;
+      color: #000;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 100%;
+      text-align: center;
+      box-shadow: none;
+      border: none;
+    }
+
+    h2.game-title {
+      margin-bottom: 20px;
+    }
+
+    .win-box {
+      /* Existing styles */
+      max-height: 250px;
+      /* Set a fixed height to enable scrolling */
+      overflow-y: auto;
+      /* Enable vertical scrolling */
+      padding-right: 10px;
+      /* Add space for scrollbar */
+
+      /* Scrollbar styling */
+      scrollbar-width: thin;
+      /* For Firefox */
+      scrollbar-color: #ffe500 #1a1a1a;
+      /* For Firefox */
+    }
+
+    /* For Webkit browsers (Chrome, Safari, Edge) */
+    .win-box::-webkit-scrollbar {
+      width: 8px;
+      /* Width of the scrollbar */
+    }
+
+    .win-box::-webkit-scrollbar-track {
+      background: #1a1a1a;
+      /* Color of the track */
+      border-radius: 4px;
+    }
+
+    .win-box::-webkit-scrollbar-thumb {
+      background-color: #ffe500;
+      /* Color of the scroll thumb */
+      border-radius: 4px;
+      border: 1px solid #1a1a1a;
+      /* Creates padding around thumb */
+    }
+
+    .win-box::-webkit-scrollbar-thumb:hover {
+      background-color: #ffcc00;
+      /* Lighter yellow on hover */
+    }
+
+    body .roblox-coin {
+      max-width: 20px !important;
+      height: auto !important;
+      max-height: 27px !important;
+      margin-bottom: 0px;
+    }
+
+    .robux-offer-container {
+      margin-left: 20px;
+      margin-right: 20px
+    }
+
+    @media (max-width: 768px) {
+      .win-box {
+        max-height: 200px;
+        /* Adjust height for smaller screens */
+      }
+
+      .roblox-coin {
+        max-width: 15px !important;
+        max-height: 20px !important;
+      }
+
+      body .game-card img {
+        height: auto !important;
+      }
+    }
+
+    .score.live-users::before {
+      content: '';
+      width: 10px;
+      height: 10px;
+      background: #2e7d32;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    /* Reduce only image width */
+    .game-card img {
+      max-width: 280px;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .game-card img {
+        max-width: 100%;
+      }
+    }
+  </style>
+
+</head>
+<header class="header">
+  <div class="header-content">
+    <a href="../index.html" class="logo">
+      <img src="../images/logo.png" alt="Site Logo">
+    </a>
+  </div>
+</header>
+
+<body>
+
+  <div class="page-wrapper">
+
+    <!-- score -->
+    <div class="score-section">
+      <h2>Live freerbx Activity <span class="score live-users" style="position:relative;">20</span> Users Online</h2>
+      <h2 style="display:none;">Your Final Score: <span class="score">20</span></h2>
+      <div class="win-box" id="win-box">
+
+
+        <div class="win-item">
+          <div class="win-left">
+            <img src="../images/coin-icon.png" alt="coin" class="coin-icon">
+            <span>Cyber_Space just collected</span>
+          </div>
+          <div class="win-right">10 <span class="roblox">freerbx</span></div>
+        </div>
+        <div class="win-item">
+          <div class="win-left">
+            <img src="../images/coin-icon.png" alt="coin" class="coin-icon">
+            <span>Cyber_Space just collected</span>
+          </div>
+          <div class="win-right">30 <span class="roblox">freerbx</span></div>
+        </div>
+      </div>
+    </div>
+    <!-- ads -->
+    <div id="banner-ad" class="ads-box">
+      <script async src="../pagead2.googlesyndication.com/pagead/js/fe0e6.txt?client=ca-pub-1615420563101212"
+        crossorigin="anonymous"></script>
+      <!-- RBX1 -->
+      <!-- DisplayATM1 -->
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1615420563101212" data-ad-slot="3737373527"
+        data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+
+    <!-- Tabs -->
+    <!-- <div class="tabs-container extra-tabs-container custom-tabs">
+      <ul class="nav nav-tabs extra-nav-tabs custom-nav-tabs">
+        <li class="nav-item extra-nav-item custom-nav-item">
+          <a class="nav-link active extra-nav-link custom-nav-link" href="#" onclick="openTab('popular')">Popular</a>
+        </li>
+        <li class="nav-item extra-nav-item custom-nav-item">
+          <a class="nav-link extra-nav-link custom-nav-link" href="#" onclick="openTab('action')">Action</a>
+        </li>
+        <li class="nav-item extra-nav-item custom-nav-item">
+          <a class="nav-link extra-nav-link custom-nav-link" href="#" onclick="openTab('arcade')">Arcade</a>
+        </li>
+        <li class="nav-item extra-nav-item custom-nav-item">
+          <a class="nav-link extra-nav-link custom-nav-link" href="#" onclick="openTab('strategy')">Strategy</a>
+        </li>
+        <li class="nav-item extra-nav-item custom-nav-item">
+          <a class="nav-link extra-nav-link custom-nav-link" href="#" onclick="openTab('adventure')">Adventure</a>
+        </li>
+        <li class="nav-item extra-nav-item custom-nav-item">
+          <a class="nav-link extra-nav-link custom-nav-link" href="#" onclick="openTab('puzzle')">Puzzle</a>
+        </li>
+        <li class="nav-item extra-nav-item custom-nav-item">
+          <a class="nav-link extra-nav-link custom-nav-link" href="#" onclick="openTab('sports')">Sports</a>
+        </li>
+      </ul>
+    </div> -->
+
+    <!-- Tab Content -->
+    <div id="popular" class="tab-content active">
+      <h2 class="game-title">freerbx Games</h2>
+      <div class="row" id="popular-games">
+        <!-- Game 1 -->
+        <div class="col-lg-6 col-md-12 my-2">
+          <a href="game1.html" class="game-card start-games">
+            <p class="game-title">SPRUNKI NIGHT TIME</p>
+            <img src="../images/game1-sprunki-night.png" alt="SPRUNKI NIGHT TIME">
+            <div class="play-win">
+              <span>Play & Collect Points</span>
+              <img src="../images/coin-icon.png" class="roblox-coin">
+              <span>146</span>
+            </div>
+            <button class="start-game">START GAME</button>
+            <div class="live-users">103 Users</div>
+          </a>
+        </div>
+        <!-- Game 2 -->
+        <div class="col-lg-6 col-md-12 my-2">
+          <a href="game2.html" class="game-card start-games">
+            <p class="game-title">SPRUNKI PARODYBOX</p>
+            <img src="../images/game2-sprunki-parody.png" alt="SPRUNKI PARODYBOX">
+            <div class="play-win">
+              <span>Play & Collect Points</span>
+              <img src="../images/coin-icon.png" class="roblox-coin">
+              <span>202</span>
+            </div>
+            <button class="start-game">START GAME</button>
+            <div class="live-users">56 Users</div>
+          </a>
+        </div>
+        <!-- Game 3 -->
+        <div class="col-lg-6 col-md-12 my-2">
+          <a href="game3.html" class="game-card start-games">
+            <p class="game-title">SPRUNKI PHASE 3 REMASTERED</p>
+            <img src="../images/game3-sprunki-phase3.png" alt="SPRUNKI PHASE 3 REMASTERED">
+            <div class="play-win">
+              <span>Play & Collect Points</span>
+              <img src="../images/coin-icon.png" class="roblox-coin">
+              <span>268</span>
+            </div>
+            <button class="start-game">START GAME</button>
+            <div class="live-users">73 Users</div>
+          </a>
+        </div>
+        <!-- Game 4 -->
+        <div class="col-lg-6 col-md-12 my-2">
+          <a href="game4.html" class="game-card start-games">
+            <p class="game-title">SPRUNKI RETAKE NEW UPDATE</p>
+            <img src="../images/game4-sprunki-retake.png" alt="SPRUNKI RETAKE NEW UPDATE">
+            <div class="play-win">
+              <span>Play & Collect Points</span>
+              <img src="../images/coin-icon.png" class="roblox-coin">
+              <span>239</span>
+            </div>
+            <button class="start-game">START GAME</button>
+            <div class="live-users">77 Users</div>
+          </a>
+        </div>
+        <!-- Game 5 -->
+        <div class="col-lg-6 col-md-12 my-2">
+          <a href="game5.html" class="game-card start-games">
+            <p class="game-title">SPRUNKI SUS</p>
+            <img src="../images/game5-sprunki-sus.png" alt="SPRUNKI SUS">
+            <div class="play-win">
+              <span>Play & Collect Points</span>
+              <img src="../images/coin-icon.png" class="roblox-coin">
+              <span>206</span>
+            </div>
+            <button class="start-game">START GAME</button>
+            <div class="live-users">27 Users</div>
+          </a>
+        </div>
+        <!-- Game 6 -->
+        <div class="col-lg-6 col-md-12 my-2">
+          <a href="game6.html" class="game-card start-games">
+            <p class="game-title">PET SIMULATOR</p>
+            <img src="../images/game6-pet-simulator.png" alt="PET SIMULATOR">
+            <div class="play-win">
+              <span>Play & Collect Points</span>
+              <img src="../images/coin-icon.png" class="roblox-coin">
+              <span>206</span>
+            </div>
+            <button class="start-game">START GAME</button>
+            <div class="live-users">171 Users</div>
+          </a>
+        </div>
+        <!-- Game 7 -->
+        <div class="col-lg-6 col-md-12 my-2">
+          <a href="game7.html" class="game-card start-games">
+            <p class="game-title">ROBLOX GUN TYCOON</p>
+            <img src="../images/game7-roblox-gun.png" alt="ROBLOX GUN TYCOON">
+            <div class="play-win">
+              <span>Play & Collect Points</span>
+              <img src="../images/coin-icon.png" class="roblox-coin">
+              <span>187</span>
+            </div>
+            <button class="start-game">START GAME</button>
+            <div class="live-users">110 Users</div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div id="action" class="tab-content">
+      <h2 class="game-title">Action Games</h2>
+      <div class="row" id="action-games"></div>
+    </div>
+
+    <div id="arcade" class="tab-content">
+      <h2 class="game-title">Arcade Games</h2>
+      <div class="row" id="arcade-games"></div>
+    </div>
+
+    <div id="strategy" class="tab-content">
+      <h2 class="game-title">Strategy Games</h2>
+      <div class="row" id="strategy-games"></div>
+    </div>
+
+    <div id="adventure" class="tab-content">
+      <h2 class="game-title">Adventure Games</h2>
+      <div class="row" id="adventure-games"></div>
+    </div>
+
+    <div id="puzzle" class="tab-content">
+      <h2 class="game-title">Puzzle Games</h2>
+      <div class="row" id="puzzle-games"></div>
+    </div>
+
+    <div id="sports" class="tab-content">
+      <h2 class="game-title">Sports Games</h2>
+      <div class="row" id="sports-games"></div>
+    </div>
+
+    <!-- ads -->
+
+    <div class="promo-section-x5y robux-offer-container">
+      <h2 class="promo-title">
+        🎮 <span class="highlight-green">Play & Collect</span> Fun Points with Mini-Games –
+        <span class="highlight-yellow">Easy Setup</span>,
+        <span class="highlight-red">Engaging Experience</span>!
+      </h2>
+
+      <p class="promo-text">
+        Looking for real games with <strong class="highlight-green">fun incentives</strong>?
+        Skip fake offers – enjoy interactive gameplay and virtual point collection!
+      </p>
+
+      <p class="promo-text">
+        Whether you're a gamer, content creator, or website owner, now you can:
+      </p>
+
+      <div class="promo-points">
+        <p>🎯 <strong class="highlight-green">Embed</strong> high-converting HTML5 games into your platform</p>
+        <p>📈 <strong class="highlight-yellow">Attract active users</strong> with interactive content</p>
+        <p>💰 <strong class="highlight-cyan">Add fun games</strong> and keep your users engaged – with built-in virtual
+          points</p>
+      </div>
+
+      <h3 class="promo-subtitle highlight-cyan">🚀 How It Works:</h3>
+      <ol class="promo-steps">
+        <li>Choose from our collection of fun, point-based mini-games for all ages</li>
+        <li>Add them to your site or app in minutes</li>
+        <li>Enjoy continuous engagement and repeat play with virtual points</li>
+      </ol>
+
+      <p class="promo-text">
+        Thousands of site owners and gamers use this to
+        <strong class="highlight-yellow">grow audience engagement and fun interactions</strong>.
+      </p>
+
+      <h3 class="promo-subtitle highlight-yellow">✅ Why You'll Love It:</h3>
+      <ul class="promo-benefits">
+        <li>✔️ <span class="highlight-green">No technical skills</span> needed</li>
+        <li>✔️ <span class="highlight-cyan">Instant access</span> to game library</li>
+        <li>✔️ <span class="highlight-red">Built-in reward system</span> to keep players coming back</li>
+      </ul>
+
+      <p class="promo-cta">
+        🔥 <strong>This is your chance to level up your platform</strong>
+        and boost user interaction – <span class="highlight-cyan">the fun way</span>.
+      </p>
+      <p class="disclaimer">
+        <strong>Disclaimer:</strong> freerbx is a fictional point system for fun and does not represent real-world
+        currency or Robux. This site is not affiliated with Roblox Corporation.
+      </p>
+    </div>
+    <style>
+      .disclaimer {
+        font-size: .85rem;
+        opacity: .75;
+        margin: 8px 0 0
+      }
+
+      .card .thumb {
+        border-radius: 12px
+      }
+
+      .btn {
+        border-radius: 12px;
+        padding: .65rem 1rem
+      }
+    </style>
+    <!--- Content Section !--->
+
+
+
+    <!---- End Content Section ---->
+    <!-- Footer -->
+    <!-- <div class="footer-links">
+      <a href="games.html"><i class="fas fa-gamepad"></i> Games</a>
+      <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+      <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+      <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
+    </div>
+  !--->
+  </div>
+
+  <!-- Scripts -->
+  <script src="../cdn.jsdelivr.net/npm/bootstrap%405.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+
+    // Tab switching function
+    function openTab(tabName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tab-content");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].classList.remove("active");
+      }
+      tablinks = document.getElementsByClassName("nav-link");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+      }
+      document.getElementById(tabName).classList.add("active");
+      event.currentTarget.classList.add("active");
+    }
+
+    function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+
+
+
+
+    const interval = setInterval(function () {
+      const played = getCookie('yes_played');
+      console.log('Cookie value for yes_played:', played);
+      if (played === '1') {
+        // clearInterval(interval); // Stop checking
+        // console.log('Cookie found, redirecting to reword-add.php');
+        //window.location.href = 'reword-add.php';
+      }
+    }, 2000); // Check every 2000ms (2 seconds)
+
+
+
+    // Games are now manually added in HTML above
+    // $(document).ready(function() {
+    //   // Games loaded manually - no API call needed
+    // });
+
+
+
+
+
+    /** -------------------------Randomly display ----------------------*/
+
+
+
+    // Array of 100+ Call of Duty–style realistic player names
+    const playerNames = [
+      "Ghost_141",
+      "Soap_MacTavish",
+      "Price_Alpha",
+      "Woods_69",
+      "Roach_X",
+      "Shadow_Raider",
+      "Bravo_King",
+      "Tango_Sniper",
+      "Delta_Six",
+      "TaskForce_99",
+      "Silent_Recon",
+      "Predator_Alpha",
+      "Warzone_Wolf",
+      "Vanguard_One",
+      "Reaper_X",
+      "Stealth_Gunner",
+      "ColdShot_47",
+      "Flashpoint_77",
+      "Nemesis_12",
+      "Overkill_85",
+      "Stryker_Command",
+      "Rapid_Assault",
+      "Maverick_69",
+      "Grunt_Force",
+      "Iron_Sergeant",
+      "Ranger_Zero",
+      "GhostRecon_89",
+      "Sniper_141",
+      "BlackOps_X",
+      "Hellfire_Unit",
+      "Deadzone_33",
+      "AlphaBravo_77",
+      "Nova_Squad",
+      "Tactical_Dog",
+      "Thunder_Operator",
+      "Airborne_Ghost",
+      "Operator_One",
+      "Ballistic_X",
+      "Mission_45",
+      "Echo_Sniper",
+      "Combat_Medic",
+      "Bravo_Lead",
+      "Juggernaut_88",
+      "Bulletproof_21",
+      "Arctic_Rifle",
+      "Raptor_Command",
+      "Delta_Viper",
+      "Operator_Zulu",
+      "GhostUnit_09",
+      "Hawk_Seven",
+      "Blitz_Force",
+      "Wolf_Pack",
+      "Crimson_Skull",
+      "Lethal_Tango",
+      "SniperZone_12",
+      "HighValueTarget",
+      "Recon_Kilo",
+      "Watchdog_Unit",
+      "Phantom_Skull",
+      "Overwatch_99",
+      "Hazard_Leader",
+      "KillSwitch_03",
+      "Bravo_Sniper",
+      "HotDrop_77",
+      "Rescue_Six",
+      "Skull_Captain",
+      "Arctic_Fox",
+      "Dagger_42",
+      "Tactical_Zero",
+      "CodeRed_Unit",
+      "GhostHunter_88",
+      "Commander_92",
+      "Hardpoint_77",
+      "Killcam_Lord",
+      "Frostbite_X",
+      "Nuclear_Blast",
+      "Rapid_Trigger",
+      "Apex_Operator",
+      "K9_Unit_X",
+      "Sabre_Team",
+      "QuickScope_99",
+      "Bravo_Fox",
+      "Fury_Rifle",
+      "OneTap_Kill",
+      "Mission_X",
+      "KillZone_101",
+      "Blackhawk_Leader",
+      "Recoil_Pro",
+      "Vortex_Recon",
+      "Veteran_Skull",
+      "NoScope_King",
+      "Ranger_Lead",
+      "Iron_Squad",
+      "Chopper_Gunner",
+      "Flashbang_X",
+      "DarkOps_92",
+      "SniperElite_7",
+      "Loadout_Master",
+      "Reload_Quick",
+      "MuzzleFlash",
+      "Strike_Force_141",
+      "Hardline_X",
+      "Fireteam_Elite",
+      "Sharpshooter_89",
+      "DeathMatch_X",
+      "Camo_Ghost",
+      "KillConfirmed_7",
+      "Streak_Legend"
+
+    ];
+
+    // Function to get random number of Robux (between 10 and 500)
+    function getRandomRobux() {
+
+      return Math.floor(Math.random() * (500 - 10 + 1)) + 10;
+    }
+
+    // Function to generate random rewards
+    function generateRandomRewards() {
+      const winBox = document.getElementById("win-box");
+      console.log('test');
+      // Create new win item
+      const randomPlayerName = playerNames[Math.floor(Math.random() * playerNames.length)];
+      const randomRobux = getRandomRobux();
+
+      const winItem = document.createElement("div");
+      winItem.className = "win-item";
+      winItem.innerHTML = `
+        <div class="win-left">
+          <img src="../images/coin-icon.png" alt="coin" class="coin-icon">
+          <span>${randomPlayerName} just collected</span>
+        </div>
+        <div class="win-right">${randomRobux} <span class="roblox">freerbx</span></div>
+      `;
+
+      // Add new item to the top
+
+      winBox.insertBefore(winItem, winBox.firstChild);
+      winBox.removeChild(winBox.lastChild);
+
+      // Limit to 4 items maximum
+      if (winBox.children.length > 4) {
+        winBox.removeChild(winBox.lastChild);
+      }
+    }
+
+    // Function to get random interval between 2-4 seconds
+    function getRandomInterval() {
+      return Math.floor(Math.random() * (4000 - 2000 + 1)) + 2000;
+    }
+
+    // Initialize with 4 items
+    for (let i = 0; i < 4; i++) {
+      generateRandomRewards();
+    }
+
+    // Update with new items at random intervals
+    function scheduleNextUpdate() {
+      setTimeout(() => {
+        generateRandomRewards();
+        scheduleNextUpdate();
+      }, getRandomInterval());
+    }
+
+    scheduleNextUpdate();
+
+
+    //setInterval(generateRandomRewards, interval * 1000);
+
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const coinKey = "user_total_coins";
+
+      // Cookie functions
+      function setCookie(name, value, days = 1) {
+        const d = new Date();
+        d.setTime(d.getTime() + (days * 86400000));
+        document.cookie = `${name}=${value};expires=${d.toUTCString()};path=/`;
+      }
+
+      function getCookie(name) {
+        const match = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+        return match ? parseInt(match.pop()) : 0;
+      }
+
+      let currentCoins = getCookie(coinKey) || 20;
+
+      const updateCoinDisplay = () => {
+        const coinSpan = document.querySelector(".score");
+        if (coinSpan) coinSpan.textContent = currentCoins;
+      };
+
+      updateCoinDisplay();
+
+      // Event delegation for .start-games links
+      document.body.addEventListener("click", function (e) {
+
+        const target = e.target.closest(".start-games");
+        if (!target) return;
+
+        e.preventDefault();
+
+        currentCoins += 5;
+        setCookie('yes_played', '1');
+        // clearInterval(interval);
+        setCookie(coinKey, currentCoins);
+        setCookie("user_total_score", currentCoins); // same as score key
+        updateCoinDisplay();
+        const href = target.href;
+        //alert(target.href);
+        // Skip anchors, JS links, and external URLs
+        if (!href || href.startsWith('#') || href.startsWith('javascript:')) return;
+        if (href.startsWith('http') && !href.includes(window.location.hostname)) return;
+
+        // e.preventDefault();
+        console.log("🔗 Link clicked:", href);
+        showAdAndNavigate(href);
+
+        setTimeout(() => {
+          window.location.href = target.href;
+        }, 100);
+      });
+
+      /** Display ads */
+      var rewardedAdInstance = null;
+      var adReady = false;
+      var adActive = false;
+      var pendingRedirectUrl = null; // Stores the target URL during ad display
+      var adSlotId = ''; // Test ID (replace with yours)
+
+      // Load rewarded ad
+      function loadRewardedAd(adInstance) {
+        console.log("✅ Ad loaded:", adInstance);
+        if (adInstance && !adActive) {
+          rewardedAdInstance = adInstance;
+          adReady = true;
+        }
+      }
+
+      // Request a new ad
+      function requestRewardedAd() {
+        if (!rewardedAdInstance && !adActive) {
+          console.log("📡 Requesting ad...");
+          window.adsbygoogle = window.adsbygoogle || [];
+          window.adsbygoogle.push({
+            params: {
+              google_ad_loaded_callback: loadRewardedAd,
+              google_ad_format: "rewarded",
+              google_ad_slot: adSlotId,
+            }
+          });
+          adReady = false;
+        }
+      }
+
+      // Show the ad and handle completion
+      function showAd(onComplete) {
+        if (!rewardedAdInstance || adActive || !adReady) {
+          console.warn("🚫 Ad not ready");
+          onComplete?.({ status: "skipped" });
+          return;
+        }
+
+        adActive = true;
+        console.log("🎬 Showing ad...");
+
+        rewardedAdInstance.show(function (result) {
+          console.log("✅ Ad finished. Status:", result?.status);
+
+          // Reset ad state
+          adActive = false;
+          adReady = false;
+          rewardedAdInstance = null;
+
+          // Preload next ad
+          requestRewardedAd();
+
+          // Execute completion callback
+          onComplete?.(result || { status: "skipped" });
+        });
+      }
+
+      // Show ad before navigating
+      function showAdAndNavigate(url) {
+        if (!url) return;
+        pendingRedirectUrl = url; // Store the target URL
+
+        if (!adReady || adActive || !rewardedAdInstance) {
+          console.log("➡️ Redirecting immediately:", url);
+          window.location.href = url;
+          return;
+        }
+
+        console.log("🎯 Will redirect after ad to:", url);
+        showAd(function (result) {
+          const targetUrl = pendingRedirectUrl;
+
+          if (result?.status === "viewed") {
+            console.log("✅ Ad completed - Closing ad and redirecting...");
+
+            // 1. First force close the ad iframe
+            try {
+              // This is the proper way to close Google's rewarded ad
+              if (rewardedAdInstance && typeof rewardedAdInstance.close === 'function') {
+                rewardedAdInstance.close();
+              }
+            } catch (e) {
+              console.warn("Couldn't manually close ad:", e);
+            }
+
+            // 2. Wait briefly for the ad to fully close
+            setTimeout(() => {
+              // 3. Then redirect in the same window
+              console.log("🌐 Now redirecting to:", targetUrl);
+              window.top.location.href = targetUrl; // Top-level navigation
+
+              // Alternative method if above doesn't work:
+              // const link = document.createElement('a');
+              // link.href = targetUrl;
+              // link.style.display = 'none';
+              // document.body.appendChild(link);
+              // link.click();
+            }, 300); // 300ms is optimal for ad cleanup
+
+          } else {
+            console.log("⏩ Ad skipped - Direct redirect");
+            window.location.href = targetUrl;
+          }
+        });
+      }
+
+      /** End */
+    });
+
+
+    /*------------ End ----------------**/
+
+
+
+
+
+  </script>
+
+
+<script>
+    window.googletag = window.googletag || { cmd: [] };
+    let anchorSlot;
+
+    googletag.cmd.push(() => {
+      anchorSlot = googletag.defineOutOfPageSlot(
+        '/23278772214/Anchor2',
+        document.body.clientWidth <= 500
+          ? googletag.enums.OutOfPageFormat.TOP_ANCHOR
+          : googletag.enums.OutOfPageFormat.BOTTOM_ANCHOR
+      );
+
+      if (anchorSlot) {
+        anchorSlot
+          .setTargeting('test', 'anchor')
+          .addService(googletag.pubads());
+      }
+
+      googletag.pubads().enableSingleRequest();
+      googletag.enableServices();
+    });
+  </script> --
+
+  <!-- Display Anchor Ad -->
+  <!-- <script>
+    googletag.cmd.push(() => {
+      if (anchorSlot) {
+        googletag.display(anchorSlot);
+      }
+    });
+  </script> -->
+</body>
+
+
+
+</html>
