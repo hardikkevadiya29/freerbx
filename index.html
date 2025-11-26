@@ -40,6 +40,49 @@
             background-repeat: no-repeat;
             background-size: cover;
         }
+
+        #ad-log-panel {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 280px;
+            max-height: 220px;
+            overflow-y: auto;
+            background: rgba(11, 18, 23, 0.85);
+            color: #d8f3ff;
+            border: 1px solid #26ffe6;
+            border-radius: 8px;
+            padding: 12px 14px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 12px;
+            z-index: 9999;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        #ad-log-panel strong {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 13px;
+            color: #26ffe6;
+        }
+
+        #ad-log-panel ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #ad-log-panel li {
+            margin-bottom: 6px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        #ad-log-panel li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
     </style>
 </head>
 
@@ -47,6 +90,10 @@
 
 
 <body>
+    <div id="ad-log-panel">
+        <strong>Ad Monitor Feed</strong>
+        <ul id="ad-log-list"></ul>
+    </div>
 
     <div class="page-wrapper">
 
@@ -179,6 +226,21 @@
     </div>
     <script>
         const adLogPrefix = '[AdMonitor]';
+        const rewardedSlotId = '8908226579';
+
+        function appendAdLog(details) {
+            const list = document.getElementById('ad-log-list');
+            if (!list) return;
+            const li = document.createElement('li');
+            const time = new Date().toLocaleTimeString();
+            const slot = details.slotId || 'n/a';
+            const status = details.status || details.adBreakName || details.source || 'n/a';
+            li.textContent = `${time} • ${details.label || 'Event'} • slot ${slot} • ${status}`;
+            list.prepend(li);
+            while (list.children.length > 8) {
+                list.removeChild(list.lastChild);
+            }
+        }
 
         function logAdEvent(details) {
             const timestamp = new Date().toISOString();
@@ -188,6 +250,7 @@
                 if (key !== 'label') console.log(`${key}:`, val);
             });
             console.groupEnd();
+            appendAdLog(details);
         }
 
         function monitorAdSlot(containerSelector, friendlyName) {
@@ -284,7 +347,12 @@
 
             initializeAds().then((isAdsReady) => {
                 if (isAdsReady) {
-                    logAdEvent({ label: 'Rewarded start', source: 'showAdAndNavigate', adBreakName: 'gamesdonut-ads' });
+                    logAdEvent({
+                        label: 'Rewarded start',
+                        source: 'showAdAndNavigate',
+                        adBreakName: 'gamesdonut-ads',
+                        slotId: rewardedSlotId
+                    });
                     window.afg.adBreak({
                         type: 'start',
                         name: 'gamesdonut-ads',
@@ -368,7 +436,12 @@
 
                     initializeAds().then((isAdsReady) => {
                         if (isAdsReady) {
-                            logAdEvent({ label: 'Rewarded start', source: 'setupRewardAdLinks', adBreakName: 'gamesdonut-ads' });
+                            logAdEvent({
+                                label: 'Rewarded start',
+                                source: 'setupRewardAdLinks',
+                                adBreakName: 'gamesdonut-ads',
+                                slotId: rewardedSlotId
+                            });
                             window.afg.adBreak({
                                 type: 'start',
                                 name: 'gamesdonut-ads',
@@ -402,7 +475,12 @@
                 setTimeout(() => {
                     initializeAds().then((isAdsReady) => {
                         if (isAdsReady) {
-                            logAdEvent({ label: 'Rewarded start', source: 'setupRewardAdOnScroll', adBreakName: 'gamesdonut-ads' });
+                            logAdEvent({
+                                label: 'Rewarded start',
+                                source: 'setupRewardAdOnScroll',
+                                adBreakName: 'gamesdonut-ads',
+                                slotId: rewardedSlotId
+                            });
                             window.afg.adBreak({
                                 type: 'start',
                                 name: 'gamesdonut-ads',
