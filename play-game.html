@@ -4,15 +4,7 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
 <head>
-  <!-- Google tag (gtag.js) -->
-  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-JC710JHQB9"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
 
-    gtag('config', 'G-JC710JHQB9');
-  </script> -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>UGC freerbx Event 2025</title>
@@ -553,10 +545,57 @@
       line-height: 20px;
       color: #ffffffc7;
     }
+
+    #ad-log-panel {
+      position: fixed;
+      bottom: 18px;
+      right: 18px;
+      width: 280px;
+      max-height: 220px;
+      overflow-y: auto;
+      background: rgba(5, 10, 18, 0.9);
+      border: 1px solid #1de9b6;
+      border-radius: 10px;
+      padding: 12px 14px;
+      z-index: 10000;
+      font-family: 'Poppins', sans-serif;
+      color: #e3faff;
+      font-size: 12px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+    }
+
+    #ad-log-panel strong {
+      color: #1de9b6;
+      margin-bottom: 6px;
+      display: block;
+      font-size: 13px;
+    }
+
+    #ad-log-panel ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #ad-log-panel li {
+      padding-bottom: 6px;
+      margin-bottom: 6px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    #ad-log-panel li:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
   </style>
 </head>
 
 <body>
+  <div id="ad-log-panel">
+    <strong>Ad Monitor Feed</strong>
+    <ul id="ad-log-list"></ul>
+  </div>
   <header class="header">
     <div class="header-content">
       <a href="index.html" class="logo">
@@ -839,6 +878,72 @@
 
 </html>
 <script>
+  const adLogPrefix = '[AdMonitor]';
+
+  function appendAdLog(details) {
+    const list = document.getElementById('ad-log-list');
+    if (!list) return;
+    const li = document.createElement('li');
+    const time = new Date().toLocaleTimeString();
+    const slot = details.slotId || 'n/a';
+    const status = details.status || details.message || details.source || 'n/a';
+    li.textContent = `${time} • ${details.label || 'Event'} • slot ${slot} • ${status}`;
+    list.prepend(li);
+    while (list.children.length > 8) list.removeChild(list.lastChild);
+  }
+
+  function logAdEvent(details) {
+    const timestamp = new Date().toISOString();
+    console.group(`${adLogPrefix} ${details.label || 'Ad Event'}`);
+    console.log('timestamp:', timestamp);
+    Object.entries(details).forEach(([key, value]) => {
+      if (key !== 'label') console.log(`${key}:`, value);
+    });
+    console.groupEnd();
+    appendAdLog(details);
+  }
+
+  function monitorSlot(insEl, friendlyName) {
+    if (!insEl) return;
+    const slotId = insEl.getAttribute('data-ad-slot');
+    const adClient = insEl.getAttribute('data-ad-client');
+    logAdEvent({
+      label: `${friendlyName} init`,
+      slotId,
+      adClient,
+      container: friendlyName
+    });
+
+    const observer = new MutationObserver(() => {
+      const status = insEl.getAttribute('data-ad-status');
+      if (!status) return;
+      logAdEvent({
+        label: `${friendlyName} status`,
+        slotId,
+        adClient,
+        status
+      });
+      if (status === 'filled' || status === 'unfilled') observer.disconnect();
+    });
+
+    observer.observe(insEl, { attributes: true, attributeFilter: ['data-ad-status'] });
+  }
+
+  function monitorAllAds() {
+    const slots = document.querySelectorAll('ins.adsbygoogle');
+    if (!slots.length) {
+      console.warn(`${adLogPrefix} no ad slots found`);
+      return;
+    }
+    slots.forEach((insEl, index) => {
+      const friendlyName = insEl.dataset.adName ||
+        (insEl.closest('[id]') ? insEl.closest('[id]').id : `slot-${index + 1}`);
+      monitorSlot(insEl, friendlyName);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', monitorAllAds);
+
 
   // Helper: Get cookie value
   function getCookie(name) {
