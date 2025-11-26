@@ -84,14 +84,14 @@
     </style>
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JC710JHQB9"></script>
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-JC710JHQB9"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
 
         gtag('config', 'G-JC710JHQB9');
-    </script>
+    </script> -->
 </head>
 
 
@@ -529,47 +529,47 @@
                 console.log("DOM fully loaded.");
 
 
-                function showRewardedAd() {
-                    if (!window.googletag || !googletag.cmd) {
-                        console.error("Google Ad Manager is not properly initialized.");
-                        return;
-                    }
+        //         function showRewardedAd() {
+        //             if (!window.googletag || !googletag.cmd) {
+        //                 console.error("Google Ad Manager is not properly initialized.");
+        //                 return;
+        //             }
 
-                    googletag.cmd.push(function () {
-                        try {
-                            const rewardedSlot = googletag
-                                .defineOutOfPageSlot(gadsids.display3, googletag.enums.OutOfPageFormat.REWARDED)
-                                .addService(googletag.pubads());
+        //             googletag.cmd.push(function () {
+        //                 try {
+        //                     const rewardedSlot = googletag
+        //                         .defineOutOfPageSlot(gadsids.display3, googletag.enums.OutOfPageFormat.REWARDED)
+        //                         .addService(googletag.pubads());
 
-                            googletag.enableServices();
-                            googletag.display(rewardedSlot);
-                            console.log("Attempting to display rewarded ad...");
+        //                     googletag.enableServices();
+        //                     googletag.display(rewardedSlot);
+        //                     console.log("Attempting to display rewarded ad...");
 
-                            googletag.pubads().addEventListener("rewardedSlotReady", function (evt) {
-                                console.log("Rewarded ad ready.");
-                                evt.makeRewardedVisible();
-                            });
+        //                     googletag.pubads().addEventListener("rewardedSlotReady", function (evt) {
+        //                         console.log("Rewarded ad ready.");
+        //                         evt.makeRewardedVisible();
+        //                     });
 
-                            googletag.pubads().addEventListener("rewardedSlotClosed", function () {
-                                console.log("Ad closed.");
-                                googletag.destroySlots([rewardedSlot]);
-                            });
-                        } catch (error) {
-                            console.error("Error during ad setup:", error);
-                        }
-                    });
-                }
+        //                     googletag.pubads().addEventListener("rewardedSlotClosed", function () {
+        //                         console.log("Ad closed.");
+        //                         googletag.destroySlots([rewardedSlot]);
+        //                     });
+        //                 } catch (error) {
+        //                     console.error("Error during ad setup:", error);
+        //                 }
+        //             });
+        //         }
 
-                setTimeout(function () {
-                    console.log("2 seconds elapsed, showing rewarded ad...");
-                    showRewardedAd();
-                }, 2000);
+        //         setTimeout(function () {
+        //             console.log("2 seconds elapsed, showing rewarded ad...");
+        //             showRewardedAd();
+        //         }, 2000);
 
-            });
-        })();
+        //     });
+        // })();
     </script>
 
-    <script>
+    <!-- <script>
         window.googletag = window.googletag || { cmd: [] };
         let anchorSlot;
 
@@ -598,8 +598,8 @@
                 googletag.display(anchorSlot);
             }
         });
-    </script>
-    </script>
+    </script> -->
+    <!-- </script> -->
 
 
 
