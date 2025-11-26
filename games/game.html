@@ -142,6 +142,49 @@
         max-width: 100%;
       }
     }
+
+    #ad-log-panel {
+      position: fixed;
+      bottom: 18px;
+      right: 18px;
+      width: 300px;
+      max-height: 240px;
+      overflow-y: auto;
+      background: rgba(5, 10, 18, 0.92);
+      border: 1px solid #1de9b6;
+      border-radius: 10px;
+      padding: 12px 16px;
+      z-index: 10000;
+      font-family: 'Poppins', sans-serif;
+      color: #e3faff;
+      font-size: 12px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+    }
+
+    #ad-log-panel strong {
+      color: #1de9b6;
+      margin-bottom: 6px;
+      display: block;
+      font-size: 13px;
+    }
+
+    #ad-log-panel ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #ad-log-panel li {
+      padding-bottom: 6px;
+      margin-bottom: 6px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    #ad-log-panel li:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
   </style>
 
 </head>
@@ -154,6 +197,10 @@
 </header>
 
 <body>
+  <div id="ad-log-panel">
+    <strong>Ad Monitor Feed</strong>
+    <ul id="ad-log-list"></ul>
+  </div>
 
   <div class="page-wrapper">
 
@@ -188,7 +235,73 @@
       <!-- DisplayATM1 -->
       <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1615420563101212" data-ad-slot="3737373527"
         data-ad-format="auto" data-full-width-responsive="true"></ins>
-      <script>
+<script>
+  const adLogPrefix = '[AdMonitor]';
+  const rewardedSlotId = '8908226579';
+
+  function appendAdLog(details) {
+    const list = document.getElementById('ad-log-list');
+    if (!list) return;
+    const li = document.createElement('li');
+    const time = new Date().toLocaleTimeString();
+    const slot = details.slotId || 'n/a';
+    const status = details.status || details.message || details.source || 'n/a';
+    li.textContent = `${time} • ${details.label || 'Event'} • slot ${slot} • ${status}`;
+    list.prepend(li);
+    while (list.children.length > 10) list.removeChild(list.lastChild);
+  }
+
+  function logAdEvent(details) {
+    const timestamp = new Date().toISOString();
+    console.group(`${adLogPrefix} ${details.label || 'Ad Event'}`);
+    console.log('timestamp:', timestamp);
+    Object.entries(details).forEach(([key, value]) => {
+      if (key !== 'label') console.log(`${key}:`, value);
+    });
+    console.groupEnd();
+    appendAdLog(details);
+  }
+
+  function monitorSlot(insEl, friendlyName) {
+    if (!insEl) return;
+    const slotId = insEl.getAttribute('data-ad-slot');
+    const adClient = insEl.getAttribute('data-ad-client');
+    logAdEvent({
+      label: `${friendlyName} init`,
+      slotId,
+      adClient,
+      container: friendlyName
+    });
+
+    const observer = new MutationObserver(() => {
+      const status = insEl.getAttribute('data-ad-status');
+      if (!status) return;
+      logAdEvent({
+        label: `${friendlyName} status`,
+        slotId,
+        adClient,
+        status
+      });
+      if (status === 'filled' || status === 'unfilled') observer.disconnect();
+    });
+
+    observer.observe(insEl, { attributes: true, attributeFilter: ['data-ad-status'] });
+  }
+
+  function monitorAllAds() {
+    const slots = document.querySelectorAll('ins.adsbygoogle');
+    if (!slots.length) {
+      console.warn(`${adLogPrefix} no ad slots found`);
+      return;
+    }
+    slots.forEach((insEl, index) => {
+      const friendlyName = insEl.dataset.adName ||
+        (insEl.closest('[id]') ? insEl.closest('[id]').id : `slot-${index + 1}`);
+      monitorSlot(insEl, friendlyName);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', monitorAllAds);
         (adsbygoogle = window.adsbygoogle || []).push({});
       </script>
     </div>
@@ -723,11 +836,16 @@
       var adReady = false;
       var adActive = false;
       var pendingRedirectUrl = null; // Stores the target URL during ad display
-      var adSlotId = ''; // Test ID (replace with yours)
+      var adSlotId = rewardedSlotId;
 
       // Load rewarded ad
       function loadRewardedAd(adInstance) {
         console.log("✅ Ad loaded:", adInstance);
+        logAdEvent({
+          label: 'Rewarded load callback',
+          slotId: adSlotId,
+          status: adInstance ? 'instance-ready' : 'no-instance'
+        });
         if (adInstance && !adActive) {
           rewardedAdInstance = adInstance;
           adReady = true;
@@ -738,6 +856,11 @@
       function requestRewardedAd() {
         if (!rewardedAdInstance && !adActive) {
           console.log("📡 Requesting ad...");
+          logAdEvent({
+            label: 'Rewarded request',
+            slotId: adSlotId,
+            status: 'requested'
+          });
           window.adsbygoogle = window.adsbygoogle || [];
           window.adsbygoogle.push({
             params: {
@@ -754,15 +877,30 @@
       function showAd(onComplete) {
         if (!rewardedAdInstance || adActive || !adReady) {
           console.warn("🚫 Ad not ready");
+          logAdEvent({
+            label: 'Rewarded show skipped',
+            slotId: adSlotId,
+            status: 'not-ready'
+          });
           onComplete?.({ status: "skipped" });
           return;
         }
 
         adActive = true;
         console.log("🎬 Showing ad...");
+        logAdEvent({
+          label: 'Rewarded show start',
+          slotId: adSlotId,
+          status: 'showing'
+        });
 
         rewardedAdInstance.show(function (result) {
           console.log("✅ Ad finished. Status:", result?.status);
+          logAdEvent({
+            label: 'Rewarded show finished',
+            slotId: adSlotId,
+            status: result?.status || 'unknown'
+          });
 
           // Reset ad state
           adActive = false;
@@ -784,11 +922,23 @@
 
         if (!adReady || adActive || !rewardedAdInstance) {
           console.log("➡️ Redirecting immediately:", url);
+          logAdEvent({
+            label: 'Rewarded bypass',
+            slotId: adSlotId,
+            status: 'redirect-immediate',
+            targetUrl: url
+          });
           window.location.href = url;
           return;
         }
 
         console.log("🎯 Will redirect after ad to:", url);
+        logAdEvent({
+          label: 'Rewarded queued',
+          slotId: adSlotId,
+          status: 'awaiting-complete',
+          targetUrl: url
+        });
         showAd(function (result) {
           const targetUrl = pendingRedirectUrl;
 
