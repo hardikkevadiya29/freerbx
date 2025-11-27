@@ -6,14 +6,7 @@
 <head>
 <meta name="robots" content="noindex, nofollow">
 
-<!-- Google tag (gtag.js) -->
-<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-JC710JHQB9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
- 
-  gtag('config', 'G-JC710JHQB9'); -->
+
 </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -44,8 +37,6 @@
 
     <!-- ads-2 -->
     <div id="banner-ad" class="ads-box">
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1615420563101212"
-        crossorigin="anonymous"></script>
       <!-- freerbx -->
       <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1615420563101212" data-ad-slot="3737373527"
         data-ad-format="auto" data-full-width-responsive="true"></ins>
@@ -394,85 +385,11 @@ freerbx is a fictional reward for in-game use only.</p>
       document.addEventListener("DOMContentLoaded", function () {
         console.log("DOM fully loaded.");
 
-        /*
-        function showRewardedAd() {
-          if (!window.googletag || !googletag.cmd) {
-            console.error("Google Ad Manager is not properly initialized.");
-            return;
-          }
-
-          googletag.cmd.push(function () {
-            try {
-              const rewardedSlot = googletag
-                .defineOutOfPageSlot(
-                  gadsids.display13,
-                  googletag.enums.OutOfPageFormat.REWARDED
-                )
-                .addService(googletag.pubads());
-
-              googletag.enableServices();
-              googletag.display(rewardedSlot);
-              console.log("Attempting to display rewarded ad...");
-
-              googletag
-                .pubads()
-                .addEventListener("rewardedSlotReady", function (evt) {
-                  console.log("Rewarded ad ready.");
-                  evt.makeRewardedVisible();
-                });
-
-              googletag
-                .pubads()
-                .addEventListener("rewardedSlotClosed", function () {
-                  console.log("Ad closed.");
-                  googletag.destroySlots([rewardedSlot]);
-                });
-            } catch (error) {
-              console.error("Error during ad setup:", error);
-            }
-          });
-        }
-
-        setTimeout(function () {
-          console.log("2 seconds elapsed, showing rewarded ad...");
-          showRewardedAd();
-        }, 2000);
-        */
+     
       });
     })();
   </script>
-
-  <!-- yaha ye ads ka code comment hai -->
-  <!-- <script>
-    window.googletag = window.googletag || { cmd: [] };
-    let anchorSlot;
-
-    googletag.cmd.push(() => {
-      anchorSlot = googletag.defineOutOfPageSlot(
-        gadsids.display1,
-        document.body.clientWidth <= 500
-          ? googletag.enums.OutOfPageFormat.TOP_ANCHOR
-          : googletag.enums.OutOfPageFormat.BOTTOM_ANCHOR
-      );
-
-      if (anchorSlot) {
-        anchorSlot
-          .setTargeting("test", "anchor")
-          .addService(googletag.pubads());
-      }
-
-      googletag.pubads().enableSingleRequest();
-      googletag.enableServices();
-    });
-  </script>
-
-  <script>
-    googletag.cmd.push(() => {
-      if (anchorSlot) {
-        googletag.display(anchorSlot);
-      }
-    });
-  </script> -->
+ 
 </body>
 
 
