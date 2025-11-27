@@ -166,12 +166,17 @@
         </div>
     </div>
     <script>
+        const POPUP_AD_KEY = 'freerbxPopupSeen';
         let checkAdInterval; // 🔧 Declare globally so it’s accessible everywhere
+
+        const hasSeenPopupAd = () => sessionStorage.getItem(POPUP_AD_KEY) === '1';
+        const markPopupAdSeen = () => sessionStorage.setItem(POPUP_AD_KEY, '1');
 
         function closePopup() {
             const popup = document.getElementById('popup-container');
             if (popup) popup.style.display = 'none';
             document.body.classList.remove('popup-active');
+            markPopupAdSeen();
         }
 
 
@@ -191,6 +196,7 @@
                 popupContainer.style.display = 'flex';
                 popupContainer.style.opacity = '1';
                 document.body.classList.add('popup-active');
+                markPopupAdSeen();
                 clearInterval(checkAdInterval);
             } else if (status === 'unfilled') {
                 console.log('Ad unfilled.');
@@ -201,14 +207,27 @@
             }
         }
 
-        setTimeout(() => {
-            checkAdInterval = setInterval(() => checkPopAdLoaded('popup-container'), 1);
+        function schedulePopupCheck() {
+            const popup = document.getElementById('popup-container');
+            if (!popup) {
+                return;
+            }
+
+            if (hasSeenPopupAd()) {
+                popup.style.display = 'none';
+                popup.style.opacity = '0';
+                return;
+            }
 
             setTimeout(() => {
-                clearInterval(checkAdInterval);
-                console.log('Stopped checking for ad fill after timeout.');
-            }, 20000);
-        }, 3000);
+                checkAdInterval = setInterval(() => checkPopAdLoaded('popup-container'), 250);
+
+                setTimeout(() => {
+                    clearInterval(checkAdInterval);
+                    console.log('Stopped checking for ad fill after timeout.');
+                }, 20000);
+            }, 3000);
+        }
 
 
         // Close button
@@ -221,27 +240,37 @@
             }
         });
         function showAdAndNavigate(href) {
-            // Ad code commented - direct navigation
-            window.location.href = href;
+            let hasNavigated = false;
+
+            const goToTarget = () => {
+                if (hasNavigated) return;
+                hasNavigated = true;
+                window.location.href = href;
+            };
 
             initializeAds().then((isAdsReady) => {
                 if (isAdsReady) {
+                    const fallbackTimer = setTimeout(goToTarget, 35000);
+
                     window.afg.adBreak({
                         type: 'start',
                         name: 'gamesdonut-ads',
                         beforeAd: () => {
                             console.log('>> Before AD');
+                            markPopupAdSeen();
                         },
                         adBreakDone: () => {
                             console.log('>> After AD');
-                            window.location.href = href;
+                            clearTimeout(fallbackTimer);
+                            goToTarget();
                         }
                     });
                 } else {
-                    window.location.href = href;
+                    goToTarget();
                 }
+            }).catch(() => {
+                goToTarget();
             });
-
         }
 
         $(document).ready(function () {
@@ -361,6 +390,7 @@
         }
 
         document.addEventListener('DOMContentLoaded', function () {
+            schedulePopupCheck();
             initializeAds();
             // setupRewardAdLinks();
         });
